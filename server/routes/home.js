@@ -8,7 +8,7 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-  res.send('Dropin home page');
+  res.send('Dropin home api point');
 });
 
 module.exports = router;
