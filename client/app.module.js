@@ -1,2 +1,1 @@
-var app = angular.module('dropIn', []);
-
+var dropInApp = angular.module('dropInApp', ['ui.router']);

@@ -1,9 +1,9 @@
 var express = require('express');
 var app = express();
 
-var home = require("./server/routes/home");
+var home = require("./server/api/home");
 
-app.use(express.static(__dirname + '/client/assets'));                 
+app.use(express.static(__dirname + '/client'));                 
 
 
 app.get('*', function(req, res) {
