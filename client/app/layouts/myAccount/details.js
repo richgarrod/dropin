@@ -10,8 +10,6 @@ angular.module('dropInApp')
           $scope.address = result.data.address;
           $scope.country = result.data.country;
           $scope.email = result.data.email;
-
-          console.log($scope);
   			}, function (error) {
   				console.log(error);
   			});	

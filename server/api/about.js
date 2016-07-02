@@ -28,4 +28,17 @@ router.get('/details/:userId', function(req, res) {
 		res.json(result.rows[0]);
 	});
 });
+
+router.get('/dropIns/:userId', function(req, res) {
+	var userId = req.params.userId;
+
+	var users = db.query('SELECT date, box FROM drop_ins WHERE user_id=' + userId + ";",
+		function (err, result) {
+		if (err) throw err;
+
+		console.log(result.rows);
+		res.json(result.rows);
+	});
+});
+
 module.exports = router;

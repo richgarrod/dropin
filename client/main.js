@@ -28,8 +28,20 @@ angular.module('dropInApp')
           $scope.address = result.data.address;
           $scope.country = result.data.country;
           $scope.email = result.data.email;
-
-          console.log($scope);
+  			}, function (error) {
+  				console.log(error);
+  			});	
+	}
+]);
+angular.module('dropInApp')
+.controller('dropInApp.controllers.myAccountDropInsController', ['$scope', 'dropInApp.services.api',
+		
+	function($scope, api) {
+  		
+  		api.get('/about/dropIns/1')
+  			.then(function(result) {
+          console.log(result);
+          $scope.dropIns = result.data;
   			}, function (error) {
   				console.log(error);
   			});	
@@ -91,6 +103,6 @@ angular.module('dropInApp').config(function($stateProvider, $urlRouterProvider) 
         .state('myAccount.dropIns', {
             url: '/myAccount/dropIns',
             templateUrl: 'app/layouts/myAccount/dropIns.html',
-            // controller: 'dropInApp.controllers.myAccountDropInsController'
+            controller: 'dropInApp.controllers.myAccountDropInsController'
         })
 });

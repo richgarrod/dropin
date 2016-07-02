@@ -43,6 +43,6 @@ angular.module('dropInApp').config(function($stateProvider, $urlRouterProvider) 
         .state('myAccount.dropIns', {
             url: '/myAccount/dropIns',
             templateUrl: 'app/layouts/myAccount/dropIns.html',
-            // controller: 'dropInApp.controllers.myAccountDropInsController'
+            controller: 'dropInApp.controllers.myAccountDropInsController'
         })
 });
