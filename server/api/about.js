@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var db = require('../services/database.js');
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -8,7 +9,12 @@ router.use(function timeLog(req, res, next) {
 });
 
 router.get('/', function(req, res) {
-  // get user names from DB and return
+  var users = db.query('SELECT name FROM users WHERE admin=true;', function (err, result) {
+  	if (err) throw err;
+
+  	console.log(result.rows);
+  	res.json(result.rows);
+  });
 });
 
 module.exports = router;
