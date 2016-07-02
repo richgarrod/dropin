@@ -16,6 +16,25 @@ angular.module('dropInApp')
   			});	
 	}
 ]);
+angular.module('dropInApp')
+.controller('dropInApp.controllers.myAccountDetailsController', ['$scope', 'dropInApp.services.api',
+		
+	function($scope, api) {
+  		
+  		api.get('/about/details/1')
+  			.then(function(result) {
+          console.log(result);
+          $scope.name = result.data.name;
+          $scope.address = result.data.address;
+          $scope.country = result.data.country;
+          $scope.email = result.data.email;
+
+          console.log($scope);
+  			}, function (error) {
+  				console.log(error);
+  			});	
+	}
+]);
 angular.module('dropInApp').service('dropInApp.services.api', ['$http', function($http) {
   
   var endPoint = 'localhost:3000';
@@ -56,5 +75,22 @@ angular.module('dropInApp').config(function($stateProvider, $urlRouterProvider) 
             url: '/about',
             templateUrl: 'app/layouts/about/about.html',
             controller: 'dropInApp.controllers.aboutController'
+        })
+
+        .state('myAccount', {
+            url: '/myAccount',
+            templateUrl: 'app/layouts/myAccount/myAccount.html',
+        })
+
+        .state('myAccount.details', {
+            url: '/myAccount/details',
+            templateUrl: 'app/layouts/myAccount/details.html',
+            controller: 'dropInApp.controllers.myAccountDetailsController'
+        })
+
+        .state('myAccount.dropIns', {
+            url: '/myAccount/dropIns',
+            templateUrl: 'app/layouts/myAccount/dropIns.html',
+            // controller: 'dropInApp.controllers.myAccountDropInsController'
         })
 });
