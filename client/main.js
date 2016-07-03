@@ -28,6 +28,10 @@ angular.module('dropInApp')
   			}, function (error) {
   				console.log(error);
   			});	
+
+        $scope.dropIn = function (box) {
+          alert("Then go drop in to " + box.name + " at " + box.address);
+        };
 	}
 ]);
 angular.module('dropInApp')

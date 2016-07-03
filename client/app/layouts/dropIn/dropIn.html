@@ -7,8 +7,8 @@
 
 <div>
 	<div ng-repeat="box in boxes">
-		<p>{{box.name}}</p>
-		<p>{{box.address}}</p>
-		<button class="btn btn-primary">Drop In</button>
+		<p>Box: {{box.name}}</p>
+		<p>Address: {{box.address}}</p>
+		<button ng-click="dropIn(box)" class="btn btn-primary">Drop In</button>
 	</div>
 <div>
