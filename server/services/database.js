@@ -3,6 +3,10 @@ var config = require('../../resources/config/dev.config');
 
 function getClient() {
   var client = new pg.Client({
+      host: config.host,
+      user: config.user,
+      password: config.password,
+      port: config.port,
       database: config.database,
     });
   return client;
