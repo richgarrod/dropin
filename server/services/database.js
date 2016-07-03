@@ -1,8 +1,9 @@
 var pg = require('pg');
+var config = require('../../resources/config/dev.config');
 
 function getClient() {
   var client = new pg.Client({
-      database: 'dropin',
+      database: config.database,
     });
   return client;
 }
