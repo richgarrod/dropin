@@ -8,6 +8,7 @@ function getClient() {
       password: config.password,
       port: config.port,
       database: config.database,
+      ssl: true
     });
   return client;
 }
