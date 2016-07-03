@@ -1,4 +1,4 @@
-var dropInApp = angular.module('dropInApp', ['ui.router']);
+var dropInApp = angular.module('dropInApp', ['ui.router', 'ui.bootstrap']);
 angular.module('dropInApp')
 .controller('dropInApp.controllers.aboutController', ['$scope', 'dropInApp.services.api',
 		
@@ -11,6 +11,20 @@ angular.module('dropInApp')
   					owners.push(owner.name);
   				})
   				$scope.owners = owners;
+  			}, function (error) {
+  				console.log(error);
+  			});	
+	}
+]);
+angular.module('dropInApp')
+.controller('dropInApp.controllers.dropInController', ['$scope', 'dropInApp.services.api',
+		
+	function($scope, api) {
+  		
+  		api.get('/boxes')
+  			.then(function(result) {
+          console.log(result);
+  				$scope.boxes = result.data;
   			}, function (error) {
   				console.log(error);
   			});	
@@ -68,21 +82,6 @@ angular.module('dropInApp').config(function($stateProvider, $urlRouterProvider) 
             templateUrl: 'app/layouts/home/home.html'
         })
 
-        // nested list with custom controller
-        .state('home.list', {
-            url: '/list',
-            templateUrl: 'app/layouts/home/home-list.html',
-            controller: function($scope) {
-                $scope.dogs = ['Bernese', 'Husky', 'Goldendoodle'];
-            }
-        })
-
-        // nested list with just some random string data
-        .state('home.paragraph', {
-            url: '/paragraph',
-            template: 'I could sure use a drink right now.'
-        })
-
         .state('about', { 
             url: '/about',
             templateUrl: 'app/layouts/about/about.html',
@@ -92,17 +91,24 @@ angular.module('dropInApp').config(function($stateProvider, $urlRouterProvider) 
         .state('myAccount', {
             url: '/myAccount',
             templateUrl: 'app/layouts/myAccount/myAccount.html',
+            replace: false
         })
 
         .state('myAccount.details', {
-            url: '/myAccount/details',
+            url: '/details',
             templateUrl: 'app/layouts/myAccount/details.html',
             controller: 'dropInApp.controllers.myAccountDetailsController'
         })
 
         .state('myAccount.dropIns', {
-            url: '/myAccount/dropIns',
+            url: '/dropIns',
             templateUrl: 'app/layouts/myAccount/dropIns.html',
             controller: 'dropInApp.controllers.myAccountDropInsController'
+        })
+
+        .state('dropIn', {
+            url: '/dropIn',
+            templateUrl: 'app/layouts/dropIn/dropIn.html',
+            controller: 'dropInApp.controllers.dropInController'
         })
 });

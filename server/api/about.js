@@ -32,7 +32,7 @@ router.get('/details/:userId', function(req, res) {
 router.get('/dropIns/:userId', function(req, res) {
 	var userId = req.params.userId;
 
-	var users = db.query('SELECT date, box FROM drop_ins WHERE user_id=' + userId + ";",
+	var users = db.query('SELECT date, boxes.name as name FROM drop_ins LEFT JOIN boxes ON drop_ins.box = boxes.id WHERE user_id=' + userId + ";",
 		function (err, result) {
 		if (err) throw err;
 

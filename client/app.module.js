@@ -1,1 +1,1 @@
-var dropInApp = angular.module('dropInApp', ['ui.router']);
+var dropInApp = angular.module('dropInApp', ['ui.router', 'ui.bootstrap']);

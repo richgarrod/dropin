@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-    <link rel="stylesheet" href="./vendor/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./vendor/angular-ui-bootstrap/dist/ui-bootstrap-csp.css">
     <title>Drop In</title>
     <script src="./vendor/angular/angular.js"></script> 
     <script src="./vendor/angular-ui-router/release/angular-ui-router.js"></script>    
+    <script src="./vendor/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+    <script src="./vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
     <script src="./main.js"></script>
 </head>
 <body ng-app="dropInApp">
@@ -23,13 +26,13 @@
             <li><a ui-sref="home">Home</a></li>
         </ul>
         <ul class="nav navbar-nav">
-            <li><a ui-sref="drop-in">Drop In!</a></li>
+            <li><a ui-sref="dropIn">Drop In!</a></li>
         </ul>
         <ul class="nav navbar-nav">
             <li><a ui-sref="about">About</a></li>
         </ul>
         <ul class="nav navbar-nav">
-            <li><a ui-sref="myAccount">My Account</a></li>
+            <li><a ui-sref="myAccount.details">My Account</a></li>
         </ul>
     </nav>
 

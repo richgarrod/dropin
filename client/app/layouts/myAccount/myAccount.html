@@ -3,9 +3,15 @@
     <p>Manage you account here.</p>  
 </div>
 
-<div>
-    <a ui-sref=".details" class="btn btn-primary">My Details</a>
-    <a ui-sref=".dropIns" class="btn btn-danger">My Drop Ins</a>
-</div>
+<!-- <ui class="nav nav-pills">
+    <li role="presentation" class="active"><a ui-sref=".details">My Details</a></li>
+    <li role="presentation"><a ui-sref=".dropIns">My Drop Ins</a></li>
+</ui> -->
+
+<uib-tabset justified="true">
+	<uib-tab ui-sref=".details" heading="My Details"></uib-tab>
+	<uib-tab ui-sref=".dropIns" heading="My Drop Ins"></uib-tab>
+</uib-tabset>
 
 <div ui-view></div>
+
