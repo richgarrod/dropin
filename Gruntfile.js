@@ -7,10 +7,41 @@ module.exports = function(grunt) {
         src: ['client/app.module.js', 'client/app/*.js', 'client/app/**/*.js', 'client/app.routes.js'],
         dest: 'client/main.js'
       }
+    },
+    ts: {
+      app: {
+        files: [{
+          src: ["server/**/*.ts", "app.ts", "client/**/*.ts"],
+          dest: "."
+        }],
+        options: {
+          module: "commonjs",
+          noLib: true,
+          target: "es6",
+          sourceMap: false
+        }
+      }
+    },
+    tslint: {
+      options: {
+        configuration: "tslint.json"
+      },
+      files: {
+        src: ["server/**/*.ts", "app.ts", "client/**/*.ts"]
+      }
+    },
+    watch: {
+      ts: {
+        files: ["server/**/*.ts", "app.ts", "client/**/*.ts"],
+        tasks: ["ts", "tslint", "concat"]
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-ts");
+  grunt.loadNpmTasks("grunt-tslint");
 
-  grunt.registerTask('default', ['concat']);
+  grunt.registerTask('default', ['ts', 'tslint', 'concat']);
 };

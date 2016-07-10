@@ -2,18 +2,23 @@
   "name": "dropin",
   "version": "1.0.0",
   "description": "Dropping in app for CROSSFIT",
-  "main": "router.js",
+  "main": "app.js",
   "scripts": {
     "test": "test",
+    "grunt": "grunt",
     "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "pg": "^6.0.1"
-  },
-  "devDependencies": {
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-ts": "^5.5.1",
+    "grunt-tslint": "^3.1.1",
+    "pg": "^6.0.1",
+    "tslint": "^3.13.0",
+    "typescript": "^1.8.10",
     "grunt": "^1.0.1",
     "grunt-contrib-concat": "^1.0.1"
   }
