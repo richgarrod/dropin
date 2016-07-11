@@ -1,16 +1,35 @@
-var express = require('express');
-var app = express();
+"use strict";
+const bodyParser = require("body-parser");
+const express = require("express");
+const path = require("path");
 var port = process.env.PORT || 3000;
-var home = require("./server/api/home");
-var about = require("./server/api/about");
-var boxes = require("./server/api/boxes");
-app.use(express.static(__dirname + '/client'));
-app.use('/home', home);
-app.use('/about', about);
-app.use('/boxes', boxes);
-app.get('*', function (req, res) {
-    res.sendFile(__dirname + '/client/index.html');
-});
-app.listen(port, function () {
-    console.log('Dropin listening on port 3000!');
-});
+const aboutRoute = require("./server/api/about");
+class Server {
+    constructor() {
+        this.app = express();
+        this.config();
+        this.routes();
+    }
+    static bootstrap() {
+        return new Server();
+    }
+    config() {
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: true }));
+        this.app.use(express.static(path.join(__dirname, "client")));
+        this.app.use(function (err, req, res, next) {
+            var error = new Error("Not Found");
+            err.status = 404;
+            next(err);
+        });
+    }
+    routes() {
+        let router;
+        router = express.Router();
+        var about = new aboutRoute.About();
+        router.get("/", about.about.bind(about.about));
+        this.app.use(router);
+    }
+}
+var server = Server.bootstrap();
+module.exports = server.app;
