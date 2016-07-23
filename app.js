@@ -27,7 +27,7 @@ class Server {
         let router;
         router = express.Router();
         var about = new aboutRoute.About();
-        router.get("/", about.about.bind(about.about));
+        router.get("/about", about.about.bind(about.about));
         this.app.use(router);
     }
 }

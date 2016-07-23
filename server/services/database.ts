@@ -3,17 +3,14 @@
 
 import * as pg from "pg";
 
-import * as config from '../../resources/config/dev.config';
+import * as config from "../../resources/config/dev.config";
 
-module Database
-{
-  export class Database
-  {
+module Database {
+  export class Database {
     private client: pg.Client;
     private config: config.Config;
 
-    constructor()
-    {
+    constructor() {
       this.config = new config.Config();
 
       this.client = new pg.Client({
@@ -26,8 +23,8 @@ module Database
       });
     }
 
-    public query(queryString, callback) {
-      this.client.connect(function (err) {
+    public query(queryString: string, callback: any) {
+      this.client.connect(function (err: Error) {
         if (err) {
           throw err;
         }
@@ -35,7 +32,7 @@ module Database
         // execute a query on our database
         this.client.query(queryString, callback);
       });
-    }  
+    }
   }
 }
 

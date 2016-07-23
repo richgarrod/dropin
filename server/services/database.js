@@ -1,6 +1,6 @@
 "use strict";
 const pg = require("pg");
-const config = require('../../resources/config/dev.config');
+const config = require("../../resources/config/dev.config");
 var Database;
 (function (Database_1) {
     class Database {
@@ -17,8 +17,9 @@ var Database;
         }
         query(queryString, callback) {
             this.client.connect(function (err) {
-                if (err)
+                if (err) {
                     throw err;
+                }
                 this.client.query(queryString, callback);
             });
         }

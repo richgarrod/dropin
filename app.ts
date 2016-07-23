@@ -89,8 +89,9 @@ class Server {
     //create routes
     var about: aboutRoute.About = new aboutRoute.About();
 
-    //home page
-    router.get("/", about.about.bind(about.about));
+    //about page
+    router.get("/about", about.about.bind(about.about));
+
 
     //use router middleware
     this.app.use(router);
